@@ -1,0 +1,27 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Create an HTML document with multiple users and roles assigned",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaydeeS/team-profile-gen.git"
+  },
+  "author": "CaydeeS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaydeeS/team-profile-gen/issues"
+  },
+  "homepage": "https://github.com/CaydeeS/team-profile-gen#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "jest": "^27.5.1"
+  }
+}
