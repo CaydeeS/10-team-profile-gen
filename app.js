@@ -93,4 +93,140 @@ const promptMenu = () => {
                     addTeam();       
             }
         });
+};
+
+const promptEngineer = () => {
+    console.log('Add New Engineer');
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Name of Engineer (Required)',
+            validate: engineerName => {
+                if (engineerName) {
+                    return true;
+                } else {
+                    console.log('Name is required');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Employee ID (Required)',
+            validate: employeeId => {
+                if (employeeId) {
+                    return true;
+                } else {
+                    console.log('Employee ID required');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Email address (Required)',
+            validate: email => {
+                if (email) {
+                    return true;
+                } else {
+                    console.log('Email is required');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'githubName',
+            message: 'GitHub Username (Required)',
+            validate: githubName => {
+                if (githubName) {
+                    return true;
+                } else {
+                    console.log('GitHub Username is required');
+                    return false;
+                }
+            }
+        }
+    ]).then(responses => {
+        console.log(responses);
+        const engineer = new Engineer(responses.name, responses.employeeId, responses.email, responses.githubName);
+        teamProfiles.push(engineer);
+        promptMenu();
+    })
+};
+
+const promptIntern = () => {
+    console.log('Add New Intern');
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Name of Intern (Required)',
+            validate: internName => {
+                if (internName) {
+                    return true;
+                } else {
+                    console.log('Name is required');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Employee ID (Required)',
+            validate: employeeId => {
+                if (employeeId) {
+                    return true;
+                } else {
+                    console.log('Employee ID required');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Email address (Required)',
+            validate: email => {
+                if (email) {
+                    return true;
+                } else {
+                    console.log('Email is required');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'School name (Required)',
+            validate: school => {
+                if (school) {
+                    return true;
+                } else {
+                    console.log('School is required');
+                    return false;
+                }
+            }
+        }
+    ]).then(responses => {
+        console.log(responses);
+        const intern = new Intern(responses.name, responses.employeeId, responses.email, responses.school);
+        teamProfiles.push(intern);
+        promptMenu();
+    })
+};
+
+const addTeam = () => {
+    console.log('Finished Adding Team Members');
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(distPath, generatePage(teamProfiles), "utf-8");
 }
+
+promptManager();
